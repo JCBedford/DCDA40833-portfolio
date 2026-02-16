@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 04: Tableau Data Visualization | Your Name</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="lab02.html">Lab 2: AI Evaluation</a>
+            <a href="lab03.html">Lab 3: Visualization Critique</a>
+            <a href="lab04.html" class="active">Lab 4: Tableau Visualization</a>
+            <!-- Add more lab links as the semester progresses -->
+        </nav>
+        <h1>Lab 04: Exploratory Data Analysis in Tableau</h1>
+    </header>
+
+    <main>
+
+        <section>
+            <h2>Interactive Dashboard</h2>
+
+            <!-- Paste your Tableau embed code below -->
+            <div class='tableauPlaceholder' id='viz1771271923562' style='position: relative'><noscript><a href='#'><img alt='Top 10 Violent States compared to their Property crime(2019) ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;La&#47;Lab5Tab&#47;Top10ViolentStatescomparedtotheirPropertycrime2019&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Lab5Tab&#47;Top10ViolentStatescomparedtotheirPropertycrime2019' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;La&#47;Lab5Tab&#47;Top10ViolentStatescomparedtotheirPropertycrime2019&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1771271923562');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+            <div class='tableauPlaceholder' id='viz1771271956628' style='position: relative'><noscript><a href='#'><img alt='Yearly Crime Rate ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;La&#47;Lab5Tab&#47;YearlyCrimeRate&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Lab5Tab&#47;YearlyCrimeRate' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;La&#47;Lab5Tab&#47;YearlyCrimeRate&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1771271956628');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+
+        </section>
+
+        <section>
+            <h2>Reflection and Analysis</h2>
+
+            <h3>Data Preparation</h3>
+            <p>
+                When I first uploaded the dataset into Tableau Public, I encountered several formatting issues. Some crime rate 
+                columns were automatically classified as text rather than numeric measures, which prevented me from creating 
+                histograms and properly sorting the top ten states in a bar chart. I manually adjusted the data types within the 
+                data source tab to ensure the fields were treated as numeric measures. I also reviewed column headers for 
+                consistency and filtered the dataset to focus on the most recent year when building the state comparison. After 
+                these adjustments, the dataset functioned correctly and allowed for smooth visualization development. Also, when 
+                posting my visualizations, I first made it into a dashboard. but I found that the dashboard was not working when I 
+                posted it, so I had to post the visualizations separately.
+            </p>
+
+            <h3>Design Choices</h3>
+            <p>
+                I created three primary visualizations to examine crime patterns from multiple analytical angles. First, I built 
+                a line graph showing the trend of crime rates over time. I used year as the dimension and crime rate as the 
+                measure in order to identify long term increases or decreases. A line graph was the most appropriate choice 
+                because it clearly displays temporal change and allows for easy identification of peaks, declines, and overall 
+                trajectory. This visualization provides historical context and establishes whether crime trends are stable, 
+                increasing, or decreasing over time.
+            </p>
+            <p>
+                In addition to the time trend, I created two bar charts to examine state level differences. The first bar chart 
+                displays the top ten states with the highest violent crime rates. I used state as the dimension and violent crime 
+                rate as the measure. This makes geographic concentration immediately visible.
+                
+                The second bar chart compares those same ten states using property crime rates. By holding the states constant 
+                and changing the measure, I was able to compare whether states with high violent crime also experience similarly 
+                high property crime. This comparative structure allows for a clearer analysis of whether different types of crime 
+                cluster together or diverge across states. Together, these three visualizations move from national trends to state 
+                level concentration and then to cross crime comparison.
+            </p>
+
+            <h3>Expected Patterns</h3>
+            <p>
+                Based on prior knowledge of crime trends, I expected property crime rates to be higher than violent crime rates 
+                across states. The visualizations confirmed this expectation, as property crime values were consistently larger. 
+                I also anticipated that the crime trend would look the way it does. It is concurrent with the rise of the war on drugs 
+                which is a prominent piece of history taught in many criminal justice courses. The line graph shows a significant increase 
+                in crime rates starting in the late 1970s, peaking in the early 1990s, and then declining steadily through the 2000s. This 
+                pattern aligns with the historical context of drug-related crime and subsequent policy responses.
+            </p>
+
+            <h3>Surprises and Outliers</h3>
+            <p>
+                One notable surprise was the degree of variation within the top ten states. Although I expected differences, the 
+                gap between the highest and lowest states in that group was more substantial than anticipated. Additionally, the 
+                violent crime bar chart showed tighter clustering among most states than I initially expected, suggesting that 
+                extreme cases may receive disproportionate public attention compared to their statistical frequency. The property 
+                crime distribution was also more concentrated than predicted.
+            </p>
+
+            <h3>Questions for Further Investigation</h3>
+            <p>
+                These patterns raise important questions. What socioeconomic or structural factors contribute to states that 
+                consistently rank highest in violent crime? How do reporting standards influence cross state comparisons? Would 
+                incorporating variables such as poverty rates, urbanization levels, or educational attainment shift the 
+                interpretation of these patterns? A longitudinal analysis could also reveal whether rankings remain stable over 
+                time or fluctuate significantly.
+            </p>
+
+            <h3>Tool Evaluation</h3>
+            <p>
+                I have used Tableau once before in my Data Analysis and Visualization course, and while I was able to use it in more detail 
+                this time, I still found it to be a user-friendly tool for creating interactive visualizations. 
+                Tableau Public proved to be an effective tool for exploratory analysis. Its drag and drop interface allowed me to 
+                quickly test different measures and dimensions, while the dashboard feature enabled me to combine multiple 
+                visualizations into a cohesive presentation. However, data cleaning options are limited compared to tools like R 
+                or Python, and advanced statistical analysis is not easily integrated. Despite these limitations, Tableau excels at 
+                rapid pattern identification and professional presentation, making it well suited for exploratory visualization and 
+                portfolio development.
+            </p>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Justus Bedford</p>
+    </footer>
+</body>
+</html>
