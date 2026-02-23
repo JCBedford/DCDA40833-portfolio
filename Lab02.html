@@ -9,6 +9,11 @@
 <body>
     <header>
         <nav>
+            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <a href="index.html">Home</a>
             <a href="Lab02.html">AI Tool Evaluation</a>
             <a href="Lab03.html">Tufte Critique</a>
@@ -124,5 +129,20 @@
     <footer>
         <p>&copy; 2026 Justus Bedford | <a href="https://github.com/JCBedford/DCDA40833-portfolio">GitHub</a></p>
     </footer>
+
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', function () {
+            const nav = this.parentElement;
+            nav.classList.toggle('nav-open');
+            this.setAttribute('aria-expanded', nav.classList.contains('nav-open'));
+        });
+        document.querySelectorAll('nav a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                const nav = document.querySelector('nav');
+                nav.classList.remove('nav-open');
+                document.querySelector('.hamburger').setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
 </body>
 </html>
