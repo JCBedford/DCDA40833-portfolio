@@ -6,70 +6,10 @@
     <meta name="description" content="Skills Portfolio showcasing work from DCDA 40833">
     <meta name="author" content="Justus Bedford">
     <title>Justus Bedford | DCDA 40833 Skills Portfolio</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 20px;
-            background-color: #000000;
-            color: #ffffff;
-        }
-        h1, h2, h3 {
-            color: #006aff	;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin-right: 15px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #ffd900;
-            /* right here changes the color of the menu text */
-        }
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .portfolio-card {
-            border: 1px solid #fff7f7;
-            border-radius: 5px;
-            padding: 15px;
-            background-color: #000000;
-            text-decoration: none;
-            color: inherit;
-            transition: box-shadow 0.3s ease;
-        }
-        .portfolio-card:hover {
-            box-shadow: 0 4px 8px #ff00001a;
-        }
-        .lab-tag {
-            display: inline-block;
-            background-color: #0099ff;
-            color: #fff;
-            padding: 2px 8px;
-            border-radius: 3px;
-            font-size: 0.8em;
-            margin-top: 10px;
-        }
-        
-        :root {
-            --primary-color: #4d1979;
-            --secondary-color: #ffd900;
-            --background-color: #ffffff;
-            --text-color: #000000;
-        }
-        /* A lot popped up when i added style so I used some of that to change text color and then messed with the colors in the root portion*/
-    </style>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <header>
     <!-- Navigation: Links to all portfolio pages -->
     <nav>
         <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
@@ -78,17 +18,20 @@
             <span></span>
         </button>
         <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
             <li><a href="Lab02.html">AI Tool Evaluation</a></li>
             <li><a href="Lab03.html">Tufte Critique</a></li>
             <li><a href="Lab04.html">Tableau Visualization</a></li>
             <li><a href="lab5.html">Lab 5</a></li>
-            <li><a href="hometown-map.html">Hometown Map</a></li>
         </ul>
+        <button type="button" class="dark-mode-switch" id="darkModeToggle" title="Toggle dark mode" onclick="document.body.classList.toggle('dark-mode');">
+            <span class="toggle-icon">☀️</span>
+            <span class="dark-mode-label"><span class="toggle-ball"></span></span>
+            <span class="toggle-icon">🌙</span>
+        </button>
     </nav>
 
     <!-- Header: Your name and course info -->
-    <header>
         <h1>Justus Bedford</h1>
         <p>DCDA 40833 Skills Portfolio | Spring 2026</p>
     </header>
@@ -185,18 +128,24 @@
     </footer>
 
     <script>
-        document.querySelector('.hamburger').addEventListener('click', function () {
-            const nav = this.parentElement;
-            nav.classList.toggle('nav-open');
-            this.setAttribute('aria-expanded', nav.classList.contains('nav-open'));
-        });
-        document.querySelectorAll('nav a').forEach(function (link) {
-            link.addEventListener('click', function () {
-                const nav = document.querySelector('nav');
-                nav.classList.remove('nav-open');
-                document.querySelector('.hamburger').setAttribute('aria-expanded', 'false');
-            });
-        });
+        (function() {
+            // Hamburger menu toggle
+            var hamburger = document.querySelector('.hamburger');
+            var nav = document.querySelector('nav');
+            if (hamburger && nav) {
+                hamburger.addEventListener('click', function() {
+                    nav.classList.toggle('nav-open');
+                    this.setAttribute('aria-expanded', nav.classList.contains('nav-open'));
+                });
+                var links = document.querySelectorAll('nav a');
+                for (var i = 0; i < links.length; i++) {
+                    links[i].addEventListener('click', function() {
+                        nav.classList.remove('nav-open');
+                        hamburger.setAttribute('aria-expanded', 'false');
+                    });
+                }
+            }
+        })();
     </script>
 </body>
 </html>

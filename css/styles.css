@@ -34,6 +34,8 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-color);
+    /* Smooth transition when toggling dark mode */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* =========================
@@ -46,6 +48,7 @@ header {
     padding: 2rem 0;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
 }
 
 header h1 {
@@ -65,10 +68,12 @@ nav {
     padding: 0.75rem;
     display: flex;              /* Make nav a flex container */
     justify-content: center;    /* Center the ul inside nav */
+    align-items: center;        /* Vertically center items */
     position: sticky;           /* Stick to top when scrolling */
     top: 0;
     z-index: 100;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
 }
 
 /* Style the navigation list */
@@ -97,6 +102,88 @@ nav a {
 
 nav a:hover {
     background-color: var(--primary-color);
+}
+
+/* Highlight the current page link in the nav */
+nav a.active {
+    background-color: var(--primary-color);
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+/* =========================
+   Dark Mode Toggle Slider
+   ========================= */
+/* Container — a real <button> so it's natively clickable */
+.dark-mode-switch {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 6px;
+    cursor: pointer;
+    padding: 4px 10px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease, border-color 0.3s ease;
+    /* Reset default button styles */
+    font: inherit;
+    color: inherit;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.dark-mode-switch:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Sun / moon emoji icons flanking the track */
+.toggle-icon {
+    font-size: 1.1rem;
+    line-height: 1;
+    user-select: none;
+}
+
+/* The slider track */
+.dark-mode-label {
+    display: block;
+    width: 44px;
+    height: 24px;
+    background-color: #888;        /* Track color (light mode) */
+    border-radius: 24px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* The sliding ball */
+.toggle-ball {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* When dark mode is active → slide ball right and change track color */
+body.dark-mode .dark-mode-switch {
+    border-color: var(--accent-color);
+    background: rgba(255, 215, 0, 0.15);
+}
+
+body.dark-mode .dark-mode-label {
+    background-color: var(--accent-color);   /* Gold track in dark mode */
+}
+
+body.dark-mode .toggle-ball {
+    transform: translateX(20px);             /* Slide to right */
 }
 
 /* =========================
@@ -148,11 +235,12 @@ main {
 
 /* All sections inside main get consistent styling */
 main section {
-    background-color: white;
+    background-color: var(--white);
     padding: 2rem;
     margin-bottom: 2rem;       /* Space between sections */
     border-radius: 8px;        /* Rounded corners */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Style h2 headings inside sections */
@@ -273,7 +361,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 1.5rem 0;
-    background: white;
+    background: var(--white);
 }
 
 th, td {
@@ -347,7 +435,7 @@ tr:nth-child(even) {
 /* Individual portfolio card styling */
 .portfolio-card {
     display: block;
-    background: white;
+    background: var(--white);
     border: 2px solid #e2e8f0;
     border-radius: 12px;
     padding: 1.5rem;
@@ -398,6 +486,7 @@ footer {
     text-align: center;
     padding: 1.5rem;
     margin-top: 2rem;
+    transition: background-color 0.3s ease;
 }
 
 footer a {
@@ -429,7 +518,7 @@ footer a:hover {
         flex-wrap: wrap;
     }
 
-    /* Hide nav links by default on mobile (ul/li structure) */
+    /* Hide nav links by default on mobile */
     nav ul {
         display: none;
         flex-direction: column;
@@ -445,28 +534,22 @@ footer a:hover {
         text-align: center;
     }
 
-    /* Hide nav links by default on mobile (bare <a> structure) */
-    nav > a:not(.hamburger) {
-        display: none;
-        width: 100%;
-        text-align: center;
-        padding: 0.5rem 1rem;
-    }
-
     /* Show links when hamburger is toggled */
     nav.nav-open ul {
         display: flex;
     }
 
-    nav.nav-open > a:not(.hamburger) {
+    /* Make each list item full-width on mobile */
+    nav ul li {
         display: block;
+        width: 100%;
+        margin-right: 0;
     }
 
-    /* Override inline styles on index.html nav ul li */
-    nav.nav-open ul li {
-        display: block !important;
-        width: 100%;
-        margin-right: 0 !important;
+    /* Keep the dark-mode slider visible on mobile */
+    .dark-mode-switch {
+        margin-left: auto;
+        order: 1;
     }
 
     main section {
@@ -490,4 +573,127 @@ footer a:hover {
         box-shadow: none;
         page-break-inside: avoid;
     }
+}
+
+/* =========================
+   Dark Mode Overrides
+   =========================
+   When the user clicks the dark-mode toggle, JavaScript adds
+   the "dark-mode" class to <body>.  These rules override the
+   light-theme CSS custom properties and any hard-coded colors
+   so the entire page switches to a dark palette.
+   ========================= */
+body.dark-mode {
+    --bg-color: #1a1a2e;            /* Deep navy background */
+    --text-color: #e0e0e0;          /* Light gray text */
+    --white: #2a2a3e;               /* Dark card / section bg */
+    --primary-color: #7c3aed;       /* Lighter purple for contrast */
+    --secondary-color: #a78bfa;     /* Softer purple accents */
+    --text-secondary: #a0a0b0;      /* Muted caption text */
+    --accent-color: #ffd700;        /* Gold stays the same */
+
+    /* Explicit overrides (belt-and-suspenders for all browsers) */
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+}
+
+/* Nav bar in dark mode */
+body.dark-mode nav {
+    background-color: #16162a;
+}
+
+/* Header in dark mode */
+body.dark-mode header {
+    background-color: #7c3aed;
+}
+
+/* Section cards in dark mode */
+body.dark-mode main section {
+    background-color: #2a2a3e;
+    color: #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Headings inside sections */
+body.dark-mode main section h2 {
+    color: #a78bfa;
+    border-bottom-color: #a78bfa;
+}
+
+body.dark-mode main section h3 {
+    color: #e0e0e0;
+}
+
+/* Portfolio cards */
+body.dark-mode .portfolio-card {
+    background-color: #2a2a3e;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+body.dark-mode .portfolio-card:hover {
+    box-shadow: 0 8px 16px rgba(124, 58, 237, 0.25);
+}
+
+body.dark-mode .portfolio-card h3 {
+    color: var(--secondary-color);
+}
+
+/* Tables */
+body.dark-mode table {
+    background: #2a2a3e;
+}
+
+body.dark-mode th {
+    background: #7c3aed;
+}
+
+body.dark-mode tr:nth-child(even) {
+    background: #2f2f45;
+}
+
+body.dark-mode td,
+body.dark-mode th {
+    border-color: #444;
+}
+
+/* Inline code */
+body.dark-mode p code,
+body.dark-mode li code {
+    background: #333;
+    color: #f0a0c0;
+}
+
+/* Footer */
+body.dark-mode footer {
+    background-color: #111;
+    color: #ccc;
+}
+
+/* Framework callout */
+body.dark-mode .framework-callout {
+    background: linear-gradient(135deg, #2a2040, #3a2a5e);
+}
+
+/* Images — slight rounding already exists, add a subtle border */
+body.dark-mode .viz-container img {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Lab tag badge */
+body.dark-mode .lab-tag {
+    background: #a78bfa;
+}
+
+/* Links in dark mode */
+body.dark-mode a {
+    color: #a78bfa;
+}
+
+body.dark-mode nav a {
+    color: white;
+}
+
+body.dark-mode footer a {
+    color: #ffd700;
 }

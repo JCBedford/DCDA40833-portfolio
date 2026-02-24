@@ -9,16 +9,24 @@
 <body>
     <header>
         <nav>
-            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <a href="index.html">Home</a>
-            <a href="Lab02.html">AI Tool Evaluation</a>
-            <a href="Lab03.html">Tufte Critique</a>
-            <a href="Lab04.html">Tableau Visualization</a>
-        </nav>
+        <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Lab02.html" class="active">AI Tool Evaluation</a></li>
+            <li><a href="Lab03.html">Tufte Critique</a></li>
+            <li><a href="Lab04.html">Tableau Visualization</a></li>
+            <li><a href="lab5.html">Lab 5</a></li>
+        </ul>
+        <button type="button" class="dark-mode-switch" id="darkModeToggle" title="Toggle dark mode" onclick="document.body.classList.toggle('dark-mode');">
+            <span class="toggle-icon">☀️</span>
+            <span class="dark-mode-label"><span class="toggle-ball"></span></span>
+            <span class="toggle-icon">🌙</span>
+        </button>
+    </nav>
         <h1>AI Tool Evaluation</h1>
     </header>
 
@@ -131,18 +139,21 @@
     </footer>
 
     <script>
-        document.querySelector('.hamburger').addEventListener('click', function () {
-            const nav = this.parentElement;
-            nav.classList.toggle('nav-open');
-            this.setAttribute('aria-expanded', nav.classList.contains('nav-open'));
-        });
-        document.querySelectorAll('nav a').forEach(function (link) {
-            link.addEventListener('click', function () {
-                const nav = document.querySelector('nav');
-                nav.classList.remove('nav-open');
-                document.querySelector('.hamburger').setAttribute('aria-expanded', 'false');
-            });
-        });
+        (function() {
+            var hamburger = document.querySelector('.hamburger');
+            var nav = document.querySelector('nav');
+            if (hamburger && nav) {
+                hamburger.addEventListener('click', function() {
+                    nav.classList.toggle('nav-open');
+                    this.setAttribute('aria-expanded', nav.classList.contains('nav-open'));
+                });
+                var links = document.querySelectorAll('nav a');
+                for (var i = 0; i < links.length; i++) {
+                    links[i].addEventListener('click', function() {
+                        nav.classList.remove('nav-open');
+                        hamburger.setAttribute('aria-expanded', 'false');
+                    });
+                }
+            }
+        })();
     </script>
-</body>
-</html>
