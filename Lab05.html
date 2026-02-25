@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5 | Justus Bedford</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+    <nav>
+        <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Lab02.html">AI Tool Evaluation</a></li>
+            <li><a href="Lab03.html">Tufte Critique</a></li>
+            <li><a href="Lab04.html">Tableau Visualization</a></li>
+            <li><a href="Lab05.html" class="active">Lab 5</a></li>
+        </ul>
+        <button type="button" class="dark-mode-switch" id="darkModeToggle" title="Toggle dark mode" onclick="document.body.classList.toggle('dark-mode'); localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');">
+            <span class="toggle-icon">☀️</span>
+            <span class="dark-mode-label"><span class="toggle-ball"></span></span>
+            <span class="toggle-icon">🌙</span>
+        </button>
+    </nav>
+        <h1>Lab 5</h1>
+        <p>DCDA 40833 | Justus Bedford</p>
+    </header>
+
+    <main>
+        <!-- TODO: Add your Lab 5 content below. Use Lab02–04 as a template. -->
+        <section>
+            <h2>Technical Understanding</h2>
+
+            <p>For this project, I used AI, mainly GitHub Copilot, to help build several features on my portfolio site. It helped generate the responsive hamburger 
+                navigation menu, the dark mode toggle with localStorage, the CSS transitions, the portfolio card grid layout, and some of the repeated HTML structure 
+                across my lab pages. I did not just copy and paste everything it gave me. I went through the code and made sure I understood what it was doing before 
+                keeping it.
+                                
+            </p>
+
+            <p>The hamburger menu works by toggling a class called nav-open on the nav element when the button is clicked. Once that class is added, the CSS changes 
+            the layout so the hidden vertical menu becomes visible on smaller screens. At the same time, the three span bars inside the button rotate and shift 
+            using transform rules so they form an X shape. The logic itself is simple. JavaScript adds or removes a class, and CSS handles how things look. 
+            After reading through it a few times, that part made sense.
+                
+            </p>
+
+            <p>The dark mode toggle works in a similar way. When the button is clicked, it adds or removes a dark-mode class on the body element. The CSS variables 
+                then switch to darker background and lighter text colors. The script also saves the user’s theme preference in localStorage. When the page loads, it 
+                checks localStorage and reapplies dark mode automatically if it was previously selected. I understand how class toggling works and how localStorage 
+                stores basic key value data in the browser.
+                
+            </p>
+
+            <p>Where I am less confident is with some of the animation details. The combination of transition: transform 0.3s ease and the nth-child selectors that 
+                control each hamburger bar took me longer to fully understand. I get what it does visually, but I had to slow down and really look at how each individual 
+                span was being transformed. I can follow it now, but I would not have written that animation from scratch without help.
+                
+            </p>
+
+            <p>I also made several changes to what the AI generated. I resized my headshot image because it was originally rendering too large and looked unbalanced. I 
+                fixed some navigation link paths that did not match my file names exactly. I also adjusted the dark mode color variables so they better matched TCU’s 
+                purple and gold instead of the generic dark gray palette that was first suggested. Those edits made the site feel more consistent with my overall design.
+
+            </p>
+            
+
+
+        </section>
+
+        <section>
+            <h2>Process Evaluation</h2>
+            <!-- TODO: Add analysis content, images, or embeds here -->
+            <p>AI was most helpful for repetitive structure and setup. Writing the same navigation bar and footer across multiple pages would have been tedious and 
+                easy to mess up manually. Copilot made that process much faster and more consistent. It also helped me get a strong starting point for layout decisions 
+                like sticky navigation and responsive flexbox positioning.
+
+            </p>
+
+            <p>At the same time, AI was not perfect. It sometimes generated placeholder content that did not reflect my actual labs, so I had to rewrite all of that 
+                myself. It also occasionally produced extra CSS rules that were more complicated than necessary. In a few cases, it referenced class names that did not 
+                exist in my stylesheet, which caused styling issues I had to debug. That reminded me that AI output still needs to be reviewed carefully.
+                
+            </p>
+
+            <p>The most important part of the process was still my judgment. AI can generate structure, but it does not understand the purpose of my portfolio or what I 
+                want to communicate. It cannot evaluate whether design choices feel cohesive or whether content is accurate. I still had to decide what made sense and 
+                what did not.
+
+            </p>
+
+
+
+        </section>
+
+        <section>
+            <h2>Ethical & Pedagogical Considerations</h2>
+          
+            <p>Vibe coding can be helpful if you already understand the fundamentals. In that case, AI speeds up routine tasks. It becomes a problem if you use it 
+                before you understand the basics, because then you cannot debug or modify the code confidently. Since I already had experience with HTML and CSS from 
+                earlier labs, I was able to treat AI as a tool rather than something I depended on completely.
+            </p>
+
+            <p>In an academic setting, transparency is important. If AI contributes to your work, that should be acknowledged clearly. In professional settings, 
+                documentation serves a similar purpose. Teams need to know how code was developed and where it came from.
+
+            </p>
+
+            <p>My guideline going forward is simple. I will use AI for scaffolding, repetitive markup, and debugging suggestions. I will not rely on it to generate 
+                analytical writing or reflection that is supposed to represent my thinking. Before keeping any AI generated code, I will read it carefully and make 
+                sure I can explain what it does. If I cannot explain it, then I need to learn it or rewrite it myself.My guideline going forward is simple. I will use 
+                AI for scaffolding, repetitive markup, and debugging suggestions. I will not rely on it to generate analytical writing or reflection that is supposed to 
+                represent my thinking. Before keeping any AI generated code, I will read it carefully and make sure I can explain what it does. If I cannot explain it, 
+                then I need to learn it or rewrite it myself.
+            </p>
+
+
+
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Justus Bedford | <a href="https://github.com/JCBedford/DCDA40833-portfolio">GitHub</a></p>
+    </footer>
+
+    <script>
+        (function() {
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+            var hamburger = document.querySelector('.hamburger');
+            var nav = document.querySelector('nav');
+            if (hamburger && nav) {
+                hamburger.addEventListener('click', function() {
+                    nav.classList.toggle('nav-open');
+                    this.setAttribute('aria-expanded', nav.classList.contains('nav-open'));
+                });
+                var links = document.querySelectorAll('nav a');
+                for (var i = 0; i < links.length; i++) {
+                    links[i].addEventListener('click', function() {
+                        nav.classList.remove('nav-open');
+                        hamburger.setAttribute('aria-expanded', 'false');
+                    });
+                }
+            }
+        })();
+    </script>
+</body>
+</html>
