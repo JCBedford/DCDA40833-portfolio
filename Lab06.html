@@ -1,81 +1,191 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- META: Character encoding, responsive viewport, page title, stylesheet -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 6 | Justus Bedford</title>
+    <title>Lab 6: Hometown Map | Justus Bedford</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+    <!-- ============================================================
+         HEADER & NAVIGATION
+         ============================================================ -->
     <header>
-    <nav>
-        <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="Lab02.html">AI Tool Evaluation</a></li>
-            <li><a href="Lab03.html">Tufte Critique</a></li>
-            <li><a href="Lab04.html">Tableau Visualization</a></li>
-            <li><a href="Lab05.html">Lab 5</a></li>
-            <li><a href="Lab06.html" class="active">Lab 6</a></li>
-        </ul>
-        <button type="button" class="dark-mode-switch" id="darkModeToggle" title="Toggle dark mode" onclick="document.body.classList.toggle('dark-mode'); localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');">
-            <span class="toggle-icon">☀️</span>
-            <span class="dark-mode-label"><span class="toggle-ball"></span></span>
-            <span class="toggle-icon">🌙</span>
-        </button>
-    </nav>
-        <h1>Lab 6</h1>
+        <nav>
+            <!-- Hamburger button - mobile only -->
+            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation links - Lab 6 is marked "active" -->
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Lab02.html">Lab 2: AI Evaluation</a></li>
+                <li><a href="Lab03.html">Lab 3: Tufte Critique</a></li>
+                <li><a href="Lab04.html">Lab 4: Tableau Viz</a></li>
+                <li><a href="Lab05.html">Lab 5: Vibe Coding</a></li>
+                <li><a href="Lab06.html" class="active">Lab 6: Hometown Map</a></li>
+            </ul>
+
+            <!-- Dark-mode toggle -->
+            <button type="button" class="dark-mode-switch" id="darkModeToggle" title="Toggle dark mode"
+                onclick="document.body.classList.toggle('dark-mode');
+                         localStorage.setItem('darkMode',
+                             document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');">
+                <span class="toggle-icon">&#9728;&#65039;</span>
+                <span class="dark-mode-label"><span class="toggle-ball"></span></span>
+                <span class="toggle-icon">&#127769;</span>
+            </button>
+        </nav>
+
+        <!-- Page heading -->
+        <h1>Lab 6: Hometown Map</h1>
         <p>DCDA 40833 | Justus Bedford</p>
     </header>
 
+    <!-- ============================================================
+         MAIN CONTENT
+         ============================================================ -->
     <main>
-        <!-- Embedded Map -->
-        <section>
-            <h2>Hometown Map</h2>
-            <iframe src="desoto_ghibli_map.html" width="100%" height="600" style="border:none; border-radius:8px;" loading="lazy" title="DeSoto Hometown Map"></iframe>
+
+        <!-- ========== LAB SYNOPSIS ========== -->
+        <section class="fade-in">
+            <h2>Lab Synopsis</h2>
+            <div class="lab-synopsis">
+                <strong>Assignment Requirements:</strong>
+                For Lab 6, we built an interactive map of our hometown using Python, Folium, and a custom Mapbox Studio basemap. The map needed at least five meaningful points of interest stored in a CSV file, popups with images and descriptions, a cohesive design theme, and deployment as a standalone HTML page embedded in our portfolio site.
+            </div>
+
+            <!-- Skill tags for this lab -->
+            <div class="skill-tags">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Folium</span>
+                <span class="skill-tag">Mapbox Studio</span>
+                <span class="skill-tag">Cartography</span>
+                <span class="skill-tag">Geospatial Data</span>
+                <span class="skill-tag">CSV</span>
+            </div>
         </section>
 
-        <!-- Written Reflection -->
-        <section>
+        <!-- ========== INTERACTIVE MAP ==========
+             Embeds the Folium-generated map (desoto_ghibli_map.html)
+             via an iframe. The source file is generated by
+             hometown_map.py from hometown_locations.csv. -->
+        <section class="fade-in">
+            <h2>Interactive Hometown Map</h2>
+            <p>
+                Below is an interactive map of DeSoto, Texas, styled with a custom Studio Ghibli-inspired Mapbox basemap.
+                Click on any marker to learn more about each location. You can also zoom and pan to explore the area.
+            </p>
+            <iframe
+                src="desoto_ghibli_map.html"
+                title="Interactive Ghibli-themed map of DeSoto, Texas"
+                width="100%"
+                height="600"
+                style="border: 1px solid #ccc; border-radius: 8px;"
+                loading="lazy">
+            </iframe>
+        </section>
+
+        <!-- ========== DESIGN INSPIRATION ==========
+             Explains the aesthetic choices behind the map theme. -->
+        <section class="fade-in">
             <h2>Design Inspiration</h2>
-            <p>My basemap was inspired by Studio Ghibli, the Japanese animation studio behind films 
-                like Spirited Away and Howl's Moving Castle. I have been an avid anime fan since I was young, and Ghibli's 
-                soft color palette felt like a natural fit for a creative map design. I used muted sage greens for land, 
-                dusty blues for water, and warm creams for roads to recreate the earthy, storybook tone found throughout 
-                the films.</p>
+            <p>
+                I chose a Studio Ghibli aesthetic for this map because I wanted the design to feel warm and personal
+                rather than sterile or generic. The Mapbox Studio basemap uses soft watercolor-like greens, muted earth
+                tones, and gentle typography that evoke the hand-painted backgrounds in films like
+                <em>My Neighbor Totoro</em> and <em>Spirited Away</em>.
+            </p>
+            <p>
+                DeSoto, Texas, is a suburb of Dallas with a mix of parks, schools, and small-town landmarks. I felt that
+                a whimsical, nature-inspired map style honored the quiet character of the area better than a standard
+                satellite or street-view basemap would.
+            </p>
         </section>
 
-        <section>
+        <!-- ========== CARTOGRAPHIC CHALLENGES ==========
+             Discusses design decisions related to readability,
+             marker styling, and tile customization. -->
+        <section class="fade-in">
             <h2>Cartographic Challenges</h2>
-            <p>My main goal was to keep the map as accurate and functional as the everyday maps people already use. I 
-                referenced Google Maps to decide what features to show at each zoom level. The biggest challenge was making 
-                sure the soft Ghibli colors did not hurt readability. I kept label text in dark charcoal and made sure roads 
-                contrasted clearly against the land fill so the map remained easy to navigate.</p>
+            <p>
+                One challenge was balancing the decorative basemap with readability. Ghibli-style tiles are beautiful, but
+                the muted color palette can make labels and markers harder to distinguish. I addressed this by using
+                custom icon colors that contrast with the basemap and keeping popup text concise so it does not overwhelm
+                the map view.
+            </p>
+            <p>
+                Choosing which five-plus locations to feature also required thought. I wanted a mix of personal
+                significance (my elementary school, a favorite park) and community landmarks (the public library, a local
+                restaurant). Each popup includes a photo and a short description explaining why the place matters to me.
+            </p>
         </section>
 
-        <section>
+        <!-- ========== TECHNICAL CHALLENGES ==========
+             Discusses coding hurdles like Folium integration,
+             CSV parsing, and Mapbox tile configuration. -->
+        <section class="fade-in">
             <h2>Technical Challenges</h2>
-            <p>This lab was my first time using Mapbox Studio and Folium, so the learning curve was steep. I had to figure 
-                out the platform from installation through publishing entirely on my own. For the Python portion, I used AI 
-                to break the assignment into clear step-by-step instructions and used the AI coding tools in VS Code to help 
-                connect the data sources and build the script. I made sure to understand each section of the code so I could 
-                explain it and make changes when needed.</p>
+            <p>
+                On the technical side, integrating a Mapbox Studio tileset into Folium required using the
+                <code>tiles</code> parameter with a custom URL template and an API access token. Getting the attribution
+                and zoom levels right took some trial and error.
+            </p>
+            <p>
+                I also stored my location data in a CSV file (<code>hometown_locations.csv</code>) and used Python to
+                read it and generate markers dynamically. This approach meant I could add or update locations without
+                editing the map code directly - just change the spreadsheet and re-run the script.
+            </p>
+            <p>
+                Embedding the final Folium HTML output inside my portfolio as an iframe was straightforward, but I had to
+                make sure paths were relative so everything worked on GitHub Pages. Setting
+                <code>loading="lazy"</code> on the iframe also improved page load performance since the map is below the
+                fold.
+            </p>
         </section>
+
+        <!-- ========== WHAT I LEARNED ========== -->
+        <section class="fade-in">
+            <h2>What I Learned &amp; Skills Demonstrated</h2>
+            <p>
+                Lab 6 brought together Python scripting, geospatial data handling, and cartographic design into a single
+                deliverable. I learned how to connect Mapbox Studio custom tilesets to Folium, manage location data in
+                CSV format, and embed interactive maps into a static web page.
+            </p>
+            <p>
+                Beyond the technical skills, this lab reinforced the importance of design intentionality. Choosing a
+                Ghibli-inspired theme was not just an aesthetic preference - it was a deliberate decision to communicate
+                warmth and personal connection through visual design, which ties directly back to the data communication
+                principles we studied throughout the course.
+            </p>
+
+            <blockquote class="key-takeaway">
+                This lab demonstrated my ability to use Python and Folium for geospatial visualization, integrate custom
+                Mapbox Studio basemaps, manage structured data in CSV, and make purposeful cartographic design choices
+                that serve the narrative of the map.
+            </blockquote>
+        </section>
+
     </main>
 
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 Justus Bedford | <a href="https://github.com/JCBedford/DCDA40833-portfolio">GitHub</a></p>
+        <p>&copy; 2026 Justus Bedford | <a href="https://github.com/JCBedford/DCDA40833-portfolio" target="_blank">GitHub</a></p>
     </footer>
 
+    <!-- SCRIPTS -->
     <script>
         (function() {
+            /* Restore dark mode */
             if (localStorage.getItem('darkMode') === 'enabled') {
                 document.body.classList.add('dark-mode');
             }
+            /* Hamburger toggle */
             var hamburger = document.querySelector('.hamburger');
             var nav = document.querySelector('nav');
             if (hamburger && nav) {
@@ -90,6 +200,16 @@
                         hamburger.setAttribute('aria-expanded', 'false');
                     });
                 }
+            }
+            /* Scroll-fade */
+            var fadeEls = document.querySelectorAll('.fade-in');
+            if ('IntersectionObserver' in window && fadeEls.length > 0) {
+                var obs = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(e) {
+                        if (e.isIntersecting) { e.target.classList.add('fade-in-visible'); obs.unobserve(e.target); }
+                    });
+                }, { threshold: 0.1 });
+                fadeEls.forEach(function(el) { obs.observe(el); });
             }
         })();
     </script>

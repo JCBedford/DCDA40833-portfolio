@@ -1,140 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- ============================================================
+         META TAGS
+         charset: UTF-8 ensures special characters render correctly.
+         viewport: makes the page responsive on mobile devices.
+         description: helps search engines understand the page.
+         author: identifies who created this portfolio.
+         ============================================================ -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Skills Portfolio showcasing work from DCDA 40833">
+    <meta name="description" content="Skills Portfolio showcasing work from DCDA 40833 — Justus Bedford, TCU Spring 2026">
     <meta name="author" content="Justus Bedford">
+
+    <!-- Page title — appears on the browser tab -->
     <title>Justus Bedford | DCDA 40833 Skills Portfolio</title>
+
+    <!-- Link to external stylesheet — all visual styling lives in styles.css -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-    <!-- Navigation: Links to all portfolio pages -->
-    <nav>
-        <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="Lab02.html">AI Tool Evaluation</a></li>
-            <li><a href="Lab03.html">Tufte Critique</a></li>
-            <li><a href="Lab04.html">Tableau Visualization</a></li>
-            <li><a href="Lab05.html">Lab 5
-            <li><a href="Lab06.html">Hometown Map</a></li>
-        </ul>
-        <button type="button" class="dark-mode-switch" id="darkModeToggle" title="Toggle dark mode" onclick="document.body.classList.toggle('dark-mode'); localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');">
-            <span class="toggle-icon">☀️</span>
-            <span class="dark-mode-label"><span class="toggle-ball"></span></span>
-            <span class="toggle-icon">🌙</span>
-        </button>
-    </nav>
 
-    <!-- Header: Your name and course info -->
+    <!-- ============================================================
+         HEADER
+         Contains the sticky navigation bar, the dark-mode toggle,
+         and the main title / subtitle for the site.
+         ============================================================ -->
+    <header>
+
+        <!-- ---- NAVIGATION BAR ----
+             The <nav> bar sticks to the top of the viewport as the user
+             scrolls (position: sticky in CSS).  It holds a hamburger
+             button (mobile only), the page links, and the dark-mode
+             toggle switch.
+             ---- -->
+        <nav>
+            <!-- Hamburger button — visible only on screens 768px or smaller.
+                 JavaScript toggles .nav-open on <nav> when clicked. -->
+            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Main navigation links — one <li> per portfolio page.
+                 The "active" class highlights the current page. -->
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="Lab02.html">Lab 2: AI Evaluation</a></li>
+                <li><a href="Lab03.html">Lab 3: Tufte Critique</a></li>
+                <li><a href="Lab04.html">Lab 4: Tableau Viz</a></li>
+                <li><a href="Lab05.html">Lab 5: Vibe Coding</a></li>
+                <li><a href="Lab06.html">Lab 6: Hometown Map</a></li>
+            </ul>
+
+            <!-- Dark-mode toggle — a <button> styled as a slider.
+                 onclick: toggles the "dark-mode" class on <body> and
+                 saves the user's preference to localStorage so it
+                 persists when they navigate to another page. -->
+            <button type="button" class="dark-mode-switch" id="darkModeToggle" title="Toggle dark mode"
+                onclick="document.body.classList.toggle('dark-mode');
+                         localStorage.setItem('darkMode',
+                             document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');">
+                <span class="toggle-icon">☀️</span>
+                <span class="dark-mode-label"><span class="toggle-ball"></span></span>
+                <span class="toggle-icon">🌙</span>
+            </button>
+        </nav>
+
+        <!-- Site title and course identifier -->
         <h1>Justus Bedford</h1>
         <p>DCDA 40833 Skills Portfolio | Spring 2026</p>
     </header>
 
+    <!-- ============================================================
+         MAIN CONTENT
+         All page content lives inside <main>.  The CSS limits its
+         width to 900px and centers it horizontally.  Each <section>
+         becomes a white card with rounded corners and a shadow.
+         ============================================================ -->
     <main>
-        <!-- Welcome Section: Brief introduction to your portfolio -->
-        <section id="welcome">
+
+        <!-- ========== WELCOME SECTION ==========
+             A brief introduction that orients the visitor.  This is the
+             first thing someone sees after the header. -->
+        <section id="welcome" class="fade-in">
             <h2>Welcome</h2>
-            <!-- TODO: Write a brief introduction (2-3 sentences) about your portfolio -->
-            <p>Welcome to my Skills Portfolio for DCDA 40833. This site showcases the work I've completed throughout the semester, demonstrating my growth in digital culture and data analytics.</p>
-            <p>Each page represents a different lab assignment, building from foundational web development skills to data visualization and interactive mapping.</p>
+            <p>Welcome to my Skills Portfolio for DCDA 40833. This site showcases the work I have completed throughout the Spring 2026 semester, demonstrating my growth in digital culture and data analytics.</p>
+            <p>Each page represents a different lab assignment, building from foundational web development skills to data visualization and interactive mapping. Use the navigation bar above or the cards below to explore each project.</p>
         </section>
-        <!-- Above is my small professional welcome to my portfolio-->
-        <!-- About Section: Tell visitors about yourself -->
-         <!-- Here I am replacing the placeholder text with information about myself -->
-        <section id="about">
+
+        <!-- ========== ABOUT ME SECTION ==========
+             Personal background, interests, and goals.  Includes a
+             headshot photo stored in the images/ subfolder. -->
+        <section id="about" class="fade-in">
             <h2>About Me</h2>
-            <!-- TODO: Replace this placeholder content with information about yourself -->
+
             <p><strong>Who I am:</strong> Justus Bedford, a Criminal Justice major in his senior year at TCU.</p>
-            <p><strong>My interests:</strong> I'm passionate about data analysis and how it can be used to understand complex social issues. My interest in DCDA stems from the desire to combine my background in Criminal Justice with modern digital tools.</p>
+
+            <p><strong>My interests:</strong> I am passionate about data analysis and how it can be used to understand complex social issues. My interest in DCDA stems from the desire to combine my background in Criminal Justice with modern digital tools.</p>
+
             <p><strong>What I hope to learn:</strong> I hope to gain a deeper understanding of how data visualization and web development can be used to communicate complex information effectively.</p>
 
-            <!-- Optional: Add a photo of yourself -->
-             <!-- Here I added a photo of myself and resized it to 50% to make it look better-->
-        <img src="images/JCB_Headshot.jpg" width = "50%">
-            <!--
+            <!-- Headshot photograph — stored in the images subfolder.
+                 The image is displayed in a circular crop using border-radius:50%
+                 in the inline style and constrained to 350px max-width. -->
             <figure class="viz-container">
-                <img src="images/profile-photo.jpg" alt="Photo of Your Name">
+                <img src="images/JCB_Headshot.jpg" alt="Headshot photograph of Justus Bedford" style="max-width:350px; border-radius:50%;">
             </figure>
-            -->
         </section>
 
-        <!-- Portfolio Section: Links to all lab pages -->
-        <section id="portfolio">
+        <!-- ========== PORTFOLIO SECTION ==========
+             A grid of clickable cards — one per lab.  Each card includes:
+               - The lab title
+               - A lab-number badge
+               - A brief synopsis of the lab requirements
+               - A note on what skills the lab demonstrates
+             Clicking a card navigates to the full lab page. -->
+        <section id="portfolio" class="fade-in">
             <h2>My Work</h2>
-            <p>Click on any card below to view that lab assignment. Focus of actual labs may change over the course of the semester:</p>
+            <p>Click on any card below to view the full lab page, including the written portion, embedded visualizations, and my reflections.</p>
 
-            <!-- Portfolio Grid: Cards linking to each lab page -->
+            <!-- Portfolio grid — CSS Grid with auto-fit columns -->
             <div class="portfolio-grid">
 
-                <!-- Lab 2: AI Tool Evaluation -->
+                <!-- ---- Lab 2 Card ----
+                     Lab 2 asked us to evaluate two AI tools, considering their
+                     capabilities, appropriate use, and ethical implications. -->
                 <a href="Lab02.html" class="portfolio-card">
                     <h3>AI Tool Evaluation</h3>
                     <span class="lab-tag">Lab 2</span>
-                    <p>Analysis of AI tools and their capabilities, exploring how artificial intelligence is changing digital culture.</p>
+                    <p><strong>Requirements:</strong> Evaluate two AI tools (one familiar, one new) in terms of capabilities, appropriate use, and ethical considerations.</p>
+                    <p><strong>Skills:</strong> Critical analysis of AI, ethical reasoning, HTML/CSS web authoring.</p>
                 </a>
 
-                <!-- Lab 3: Tufte Critique -->
+                <!-- ---- Lab 3 Card ----
+                     Lab 3 asked us to critique a data visualization using
+                     Edward Tufte's principles of graphical excellence. -->
                 <a href="Lab03.html" class="portfolio-card">
                     <h3>Tufte Critique</h3>
                     <span class="lab-tag">Lab 3</span>
-                    <p>Critical analysis of a data visualization using Edward Tufte's principles of graphical excellence.</p>
+                    <p><strong>Requirements:</strong> Select a published data visualization and critique it using Edward Tufte's principles of information resolution and graphical integrity.</p>
+                    <p><strong>Skills:</strong> Visual literacy, critical evaluation, analytical writing.</p>
                 </a>
 
-                <!-- Lab 4: Tableau Visualization -->
+                <!-- ---- Lab 4 Card ----
+                     Lab 4 asked us to perform exploratory data analysis in
+                     Tableau Public and embed interactive visualizations. -->
                 <a href="Lab04.html" class="portfolio-card">
                     <h3>Tableau Visualization</h3>
                     <span class="lab-tag">Lab 4</span>
-                    <p>Interactive data visualization created with Tableau Public, exploring patterns in real-world data.</p>
+                    <p><strong>Requirements:</strong> Conduct exploratory data analysis using Tableau Public. Create multiple visualizations and embed them in a portfolio page with written analysis.</p>
+                    <p><strong>Skills:</strong> Data visualization, Tableau Public, pattern identification, embedding interactive content.</p>
                 </a>
 
-                <!-- Lab 5: TBD -->
+                <!-- ---- Lab 5 Card ----
+                     Lab 5 asked us to reflect on our use of AI coding tools
+                     (vibe coding) and evaluate the process critically. -->
                 <a href="Lab05.html" class="portfolio-card">
-                    <h3>Lab 5</h3>
+                    <h3>Vibe Coding Reflection</h3>
                     <span class="lab-tag">Lab 5</span>
-                    <p>Content based on Lab 5 assignment.</p>
+                    <p><strong>Requirements:</strong> Reflect on the use of AI coding assistants in building this portfolio site. Discuss technical understanding, process evaluation, and ethical considerations.</p>
+                    <p><strong>Skills:</strong> AI-assisted development, code comprehension, ethical reasoning, self-evaluation.</p>
                 </a>
 
-                <!-- Lab 6: Hometown Map -->
+                <!-- ---- Lab 6 Card ----
+                     Lab 6 asked us to create an interactive Folium map of
+                     meaningful locations from our hometown. -->
                 <a href="Lab06.html" class="portfolio-card">
                     <h3>Hometown Map</h3>
                     <span class="lab-tag">Lab 6</span>
-                    <p>Interactive Folium map showcasing meaningful locations from my hometown with personal reflections.</p>
+                    <p><strong>Requirements:</strong> Design a custom Mapbox basemap and use Python's Folium library to build an interactive map of meaningful hometown locations with styled popups.</p>
+                    <p><strong>Skills:</strong> Python, Folium, Mapbox Studio, cartographic design, geospatial data.</p>
                 </a>
 
             </div>
+            <!-- End of portfolio-grid -->
         </section>
 
-        <!-- Reflection Section: Optional semester reflection -->
-        <section id="reflection">
+        <!-- ========== SEMESTER REFLECTION SECTION ==========
+             An overall reflection on what was learned across all labs,
+             challenges faced, and how the student grew as a result. -->
+        <section id="reflection" class="fade-in">
             <h2>Semester Reflection</h2>
-            <!-- TODO: After completing all labs, write a reflection on your growth -->
-            <p><strong>What I learned:</strong> I developed some more troubleshooting skills with a software I've never used before</p>
-            <p><strong>Challenges I overcame:</strong> I unpublished my page and had to re-publish it after fixing the issues</p>
-            <p><strong>How I grew:</strong> My understanding of digital culture and data analytics evolved as I learned to navigate and interpret complex datasets and visualizations.</p>
-            <p><strong>Looking ahead:</strong> I will apply these skills in future projects by continuing to explore data visualization tools and methodologies.</p>
+
+            <p><strong>What I learned:</strong> Over the course of the semester, I developed practical skills in HTML, CSS, JavaScript, Tableau, Python, and Folium. More importantly, I learned how to evaluate the tools I use — whether that is an AI assistant, a visualization platform, or a mapping library — with a critical eye toward both capability and ethics.</p>
+
+            <p><strong>Challenges I overcame:</strong> Early on, I accidentally unpublished my GitHub Pages site and had to troubleshoot how to get it back online. Working with Tableau's data types required patience and manual adjustment. Learning Mapbox Studio and Folium from scratch for Lab 6 had a steep learning curve, but breaking the assignment into steps (with AI assistance) made it manageable.</p>
+
+            <p><strong>How I grew:</strong> My understanding of digital culture and data analytics evolved as I learned to navigate complex datasets, design meaningful visualizations, and build a fully functioning website. I moved from being someone who simply consumed data to someone who can present and critique it.</p>
+
+            <p><strong>Looking ahead:</strong> I will apply these skills in future projects — especially the ability to combine Criminal Justice data with interactive visualization tools. The web development foundation I built here will serve me in any career that requires communicating complex information to a broad audience.</p>
+
+            <!-- Key takeaway blockquote — styled with a gold left-border and
+                 decorative quotation mark via the .key-takeaway class in CSS -->
+            <blockquote class="key-takeaway">
+                The most important lesson from this course is that tools are only as good as the judgment behind them. AI can scaffold, Tableau can visualize, and code can build — but critical thinking is what turns raw output into meaningful communication.
+            </blockquote>
         </section>
+
     </main>
 
-    <!-- Footer: Links and copyright -->
+    <!-- ============================================================
+         FOOTER
+         Contains a link to the GitHub repository and copyright info.
+         ============================================================ -->
     <footer>
-        <p><a href="https://github.com/JCBedford/DCDA40833-portfolio">View Repository on GitHub</a></p>
+        <p><a href="https://github.com/JCBedford/DCDA40833-portfolio" target="_blank">View Repository on GitHub</a></p>
         <p>&copy; 2026 Justus Bedford | DCDA 40833 | TCU</p>
     </footer>
 
+    <!-- ============================================================
+         SCRIPTS
+         1. Dark-mode restoration — checks localStorage on page load
+            and re-applies the dark-mode class if it was saved.
+         2. Hamburger menu — toggles .nav-open on <nav> when clicked;
+            also closes the menu when any link is clicked.
+         3. Scroll-fade observer — uses IntersectionObserver to add
+            .fade-in-visible to sections as they scroll into view.
+         ============================================================ -->
     <script>
         (function() {
-            // Restore dark mode from previous visit
+            /* --- 1. Restore dark mode from a previous visit --- */
             if (localStorage.getItem('darkMode') === 'enabled') {
                 document.body.classList.add('dark-mode');
             }
-            // Hamburger menu toggle
+
+            /* --- 2. Hamburger menu toggle --- */
             var hamburger = document.querySelector('.hamburger');
             var nav = document.querySelector('nav');
             if (hamburger && nav) {
@@ -142,6 +234,7 @@
                     nav.classList.toggle('nav-open');
                     this.setAttribute('aria-expanded', nav.classList.contains('nav-open'));
                 });
+                /* Close menu when a nav link is clicked */
                 var links = document.querySelectorAll('nav a');
                 for (var i = 0; i < links.length; i++) {
                     links[i].addEventListener('click', function() {
@@ -149,6 +242,27 @@
                         hamburger.setAttribute('aria-expanded', 'false');
                     });
                 }
+            }
+
+            /* --- 3. Scroll-fade animation ---
+               IntersectionObserver watches every element with class "fade-in".
+               When at least 10% of the element is visible in the viewport,
+               the observer adds "fade-in-visible" which triggers the CSS
+               opacity/transform transition. */
+            var fadeElements = document.querySelectorAll('.fade-in');
+            if ('IntersectionObserver' in window && fadeElements.length > 0) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fade-in-visible');
+                            observer.unobserve(entry.target); /* Only animate once */
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                fadeElements.forEach(function(el) {
+                    observer.observe(el);
+                });
             }
         })();
     </script>

@@ -1,125 +1,191 @@
-/* =========================
-   DCDA 40833 Skills Portfolio Template
-   CSS Stylesheet for Student Portfolios
-   ========================= */
+/* ==========================================================================
+   DCDA 40833 Skills Portfolio — Master Stylesheet
+   Author:  Justus Bedford
+   Updated: March 2026
+   
+   This stylesheet controls the visual presentation of every page in the
+   portfolio.  It uses CSS custom properties (variables) so that colors
+   can be changed in one place and applied everywhere.  A dedicated
+   "dark-mode" section overrides those variables when the user toggles
+   the dark-mode switch.
+   
+   TABLE OF CONTENTS
+   -----------------
+   1. CSS Variables (Color Scheme)
+   2. Basic Reset & Typography
+   3. Header & Navigation
+   4. Dark Mode Toggle Slider
+   5. Hamburger Menu Button
+   6. Main Content & Sections
+   7. Lab Synopsis Callout
+   8. Skill Tags
+   9. Key Takeaway Blockquote
+  10. Data Visualizations
+  11. Code Blocks
+  12. Data Tables
+  13. Framework Connections
+  14. Portfolio Cards (Home page)
+  15. Footer
+  16. Scroll-Fade Animation
+  17. Responsive Design (Mobile)
+  18. Print Styles
+  19. Dark Mode Overrides
+   ========================================================================== */
 
-/* =========================
-   CSS Variables (Color Scheme)
-   ========================= */
+
+/* ==========================================================================
+   1. CSS Variables (Color Scheme)
+   --------------------------------------------------------------------------
+   Custom properties defined on :root are available to every element.
+   Changing a value here instantly updates the entire site.
+   ========================================================================== */
 :root {
-    --primary-color: #4d1979;      /* TCU Purple */
-    --secondary-color: #7c3aed;    /* Light Purple */
-    --accent-color: #ffd700;       /* Gold accent */
-    --text-color: #333;            /* Dark gray for text */
-    --text-secondary: #64748b;     /* Lighter gray for captions */
-    --bg-color: #f4f4f4;           /* Light background */
-    --white: #ffffff;
+    --primary-color: #4d1979;      /* TCU Purple — used for headings, nav, borders */
+    --secondary-color: #7c3aed;    /* Lighter Purple — accents, hover states */
+    --accent-color: #ffd700;       /* Gold — links in footer, dark-mode highlights */
+    --text-color: #333;            /* Dark gray — body text */
+    --text-secondary: #64748b;     /* Slate gray — captions, muted text */
+    --bg-color: #f4f4f4;           /* Light gray — page background */
+    --white: #ffffff;              /* White — section / card backgrounds */
+    --synopsis-bg: #f0e7f8;        /* Soft lavender — lab synopsis callout bg */
+    --synopsis-border: #7c3aed;    /* Purple — left-border on synopsis callout */
 }
 
-/* =========================
-   Basic Reset & Typography
-   ========================= */
+/* ==========================================================================
+   2. Basic Reset & Typography
+   --------------------------------------------------------------------------
+   The universal selector (*) removes default margins and padding so that
+   every element starts from a clean slate.  box-sizing: border-box makes
+   width/height calculations include padding and border.
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Smooth scrolling when a user clicks an anchor link (e.g., #portfolio) */
 html {
-    scroll-behavior: smooth;       /* Smooth scrolling for anchor links */
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.6;
+    /* System font stack — uses the OS's native font for fast rendering */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+                 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;                      /* Comfortable reading spacing */
     color: var(--text-color);
     background-color: var(--bg-color);
-    /* Smooth transition when toggling dark mode */
+    /* Smooth background/color transition when dark mode is toggled */
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* =========================
-   Header & Navigation
-   ========================= */
-/* Style semantic tags directly - no classes needed! */
+/* ==========================================================================
+   3. Header & Navigation
+   --------------------------------------------------------------------------
+   The <header> uses the primary TCU purple with a gradient.  Inside it,
+   <nav> sits at the top with position:sticky so it stays visible as the
+   user scrolls.  The nav uses flexbox to lay out links horizontally.
+   ========================================================================== */
+
+/* ---- Site Header ---- */
+/* Gradient adds visual depth — goes from dark purple (left) to lighter purple (right) */
 header {
-    background-color: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
-    padding: 2rem 0;
+    padding: 2.5rem 0 2rem;            /* Top/bottom breathing room */
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow separates header from page content */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     transition: background-color 0.3s ease;
 }
 
+/* Main title text inside header */
 header h1 {
     color: white;
     margin: 0 0 0.5rem 0;
-    font-size: 2rem;
+    font-size: 2.25rem;
+    /* Slight letter-spacing for a more polished look */
+    letter-spacing: 0.5px;
 }
 
+/* Subtitle / course info line */
 header p {
     margin: 0;
     opacity: 0.9;
     font-size: 1.1rem;
+    letter-spacing: 0.3px;
 }
 
+/* ---- Navigation Bar ---- */
 nav {
-    background-color: #3d1461;
+    background-color: #3d1461;          /* Slightly darker purple than the header */
     padding: 0.75rem;
-    display: flex;              /* Make nav a flex container */
-    justify-content: center;    /* Center the ul inside nav */
-    align-items: center;        /* Vertically center items */
-    position: sticky;           /* Stick to top when scrolling */
+    display: flex;                      /* Flexbox — items sit side-by-side */
+    justify-content: center;            /* Center the <ul> list */
+    align-items: center;                /* Vertically center all children */
+    position: sticky;                   /* Stick to the top of the viewport on scroll */
     top: 0;
-    z-index: 100;
+    z-index: 100;                       /* Stay above all other content */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
 }
 
-/* Style the navigation list */
+/* Unordered list that holds the nav links */
 nav ul {
-    list-style: none;           /* Remove bullets */
-    padding: 0;                 /* Remove default padding */
-    margin: 0;                  /* Remove default margin */
-    display: flex;              /* Arrange items horizontally */
-    flex-direction: row;        /* Explicit: horizontal on desktop */
-    justify-content: center;    /* Center the items */
-    gap: 1rem;                  /* Space between items */
-    flex-wrap: wrap;            /* Wrap on small screens */
+    list-style: none;                   /* Remove default bullet points */
+    padding: 0;
+    margin: 0;
+    display: flex;                      /* Horizontal layout */
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.75rem;                       /* Even spacing between each <li> */
+    flex-wrap: wrap;                    /* Wrap to next line if viewport is narrow */
 }
 
+/* Remove any residual list-style from <li> elements */
 nav li {
-    list-style: none;           /* Extra insurance - remove bullets */
+    list-style: none;
 }
 
+/* Individual nav links */
 nav a {
     color: white;
-    text-decoration: none;
+    text-decoration: none;              /* Remove underline */
     padding: 0.5rem 1rem;
-    transition: background-color 0.3s ease;
     border-radius: 4px;
+    font-size: 0.95rem;
+    /* Smooth hover transition */
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+/* Hover state — purple highlight and slight lift */
 nav a:hover {
     background-color: var(--primary-color);
+    transform: translateY(-1px);
 }
 
-/* Highlight the current page link in the nav */
+/* Active page indicator — filled purple background + bold text */
 nav a.active {
     background-color: var(--primary-color);
     font-weight: 600;
     border-radius: 4px;
 }
 
-/* =========================
-   Dark Mode Toggle Slider
-   ========================= */
-/* Container — a real <button> so it's natively clickable */
+/* ==========================================================================
+   4. Dark Mode Toggle Slider
+   --------------------------------------------------------------------------
+   A <button> styled to look like a sun/moon slider.  Clicking it toggles
+   the "dark-mode" class on <body> via inline JavaScript and saves the
+   preference in localStorage so it persists across page loads.
+   ========================================================================== */
+
+/* Outer container — styled as a pill-shaped button */
 .dark-mode-switch {
-    margin-left: auto;
+    margin-left: auto;                  /* Push to the right side of the nav */
     display: flex;
     align-items: center;
-    flex-shrink: 0;
+    flex-shrink: 0;                     /* Don't shrink if nav gets tight */
     gap: 6px;
     cursor: pointer;
     padding: 4px 10px;
@@ -127,7 +193,7 @@ nav a.active {
     border-radius: 30px;
     background: rgba(255, 255, 255, 0.1);
     transition: background 0.3s ease, border-color 0.3s ease;
-    /* Reset default button styles */
+    /* Reset native <button> styles */
     font: inherit;
     color: inherit;
     outline: none;
@@ -135,31 +201,32 @@ nav a.active {
     appearance: none;
 }
 
+/* Hover glow effect */
 .dark-mode-switch:hover {
     background: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.7);
 }
 
-/* Sun / moon emoji icons flanking the track */
+/* Sun and Moon emoji icons */
 .toggle-icon {
     font-size: 1.1rem;
     line-height: 1;
-    user-select: none;
+    user-select: none;                  /* Prevent accidental text selection */
 }
 
-/* The slider track */
+/* The small oval "track" between the icons */
 .dark-mode-label {
     display: block;
     width: 44px;
     height: 24px;
-    background-color: #888;        /* Track color (light mode) */
+    background-color: #888;            /* Neutral gray when light mode */
     border-radius: 24px;
     position: relative;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-/* The sliding ball */
+/* The round "ball" that slides left/right */
 .toggle-ball {
     position: absolute;
     top: 3px;
@@ -169,28 +236,35 @@ nav a.active {
     background-color: #fff;
     border-radius: 50%;
     transition: transform 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* When dark mode is active → slide ball right and change track color */
+/* --- Dark-mode active states for the toggle --- */
+/* Gold border glow when dark mode is on */
 body.dark-mode .dark-mode-switch {
     border-color: var(--accent-color);
     background: rgba(255, 215, 0, 0.15);
 }
 
+/* Track turns gold */
 body.dark-mode .dark-mode-label {
-    background-color: var(--accent-color);   /* Gold track in dark mode */
+    background-color: var(--accent-color);
 }
 
+/* Ball slides to the right (moon side) */
 body.dark-mode .toggle-ball {
-    transform: translateX(20px);             /* Slide to right */
+    transform: translateX(20px);
 }
 
-/* =========================
-   Hamburger Menu Button
-   ========================= */
+/* ==========================================================================
+   5. Hamburger Menu Button
+   --------------------------------------------------------------------------
+   Hidden on desktop (display:none).  On mobile (<768px) it becomes visible
+   and toggles the nav links open/closed.  Three <span> bars animate into
+   an "X" when the nav has the .nav-open class.
+   ========================================================================== */
 .hamburger {
-    display: none;
+    display: none;                      /* Hidden on desktop */
     flex-direction: column;
     justify-content: center;
     gap: 5px;
@@ -198,52 +272,59 @@ body.dark-mode .toggle-ball {
     border: none;
     cursor: pointer;
     padding: 0.5rem;
-    z-index: 110;
+    z-index: 110;                       /* Above the nav overlay */
 }
 
+/* Each bar of the hamburger icon */
 .hamburger span {
     display: block;
     width: 25px;
     height: 3px;
     background-color: white;
     border-radius: 2px;
+    /* Smooth rotation/fade for the X animation */
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Animate to X when open */
+/* --- X animation when menu is open --- */
+/* Top bar rotates 45 degrees and shifts down */
 nav.nav-open .hamburger span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
-
+/* Middle bar fades out */
 nav.nav-open .hamburger span:nth-child(2) {
     opacity: 0;
 }
-
+/* Bottom bar rotates -45 degrees and shifts up */
 nav.nav-open .hamburger span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* =========================
-   Main Content
-   ========================= */
-/* Style main semantic tag directly */
+/* ==========================================================================
+   6. Main Content & Sections
+   --------------------------------------------------------------------------
+   <main> is horizontally centered with a max-width so text lines don't
+   stretch too wide.  Each <section> inside gets a white card appearance
+   with rounded corners and a box shadow.
+   ========================================================================== */
 main {
-    max-width: 900px;          /* Don't get too wide */
-    margin: 2rem auto;         /* Center horizontally */
-    padding: 0 1rem;           /* Space on sides for mobile */
+    max-width: 900px;                   /* Comfortable reading width */
+    margin: 2rem auto;                  /* Center horizontally */
+    padding: 0 1rem;                    /* Side padding for mobile */
 }
 
-/* All sections inside main get consistent styling */
+/* White card styling for every section */
 main section {
     background-color: var(--white);
     padding: 2rem;
-    margin-bottom: 2rem;       /* Space between sections */
-    border-radius: 8px;        /* Rounded corners */
+    margin-bottom: 2rem;
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Smooth transition for dark mode toggle */
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Style h2 headings inside sections */
+/* Section headings — purple with an underline accent */
 main section h2 {
     color: var(--primary-color);
     border-bottom: 3px solid var(--secondary-color);
@@ -252,6 +333,7 @@ main section h2 {
     font-size: 1.875rem;
 }
 
+/* Sub-headings within sections */
 main section h3 {
     color: var(--text-color);
     margin-top: 1.5rem;
@@ -259,7 +341,7 @@ main section h3 {
     font-size: 1.5rem;
 }
 
-/* Paragraphs inside sections */
+/* Paragraphs — generous line height for readability */
 main section p {
     margin-bottom: 1rem;
     line-height: 1.8;
@@ -276,24 +358,120 @@ main section li {
     margin-bottom: 0.5rem;
 }
 
-/* =========================
-   Data Visualizations
-   ========================= */
-/* Container for charts and images */
+
+/* ==========================================================================
+   7. Lab Synopsis Callout
+   --------------------------------------------------------------------------
+   A styled box that appears at the top of each lab page to summarize
+   the lab's requirements.  Uses a left-border accent and a light
+   background to visually distinguish it from regular content.
+   ========================================================================== */
+.lab-synopsis {
+    background: var(--synopsis-bg);             /* Soft lavender */
+    border-left: 5px solid var(--synopsis-border); /* Purple accent stripe */
+    border-radius: 0 8px 8px 0;                /* Rounded right corners only */
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* Bold heading inside the synopsis box */
+.lab-synopsis strong {
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+}
+
+
+/* ==========================================================================
+   8. Skill Tags
+   --------------------------------------------------------------------------
+   Small pill-shaped badges used to highlight specific tools or technologies
+   learned in each lab (e.g., "HTML", "Tableau", "Python").
+   ========================================================================== */
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;                    /* Wrap to next line if needed */
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+/* Individual tag */
+.skill-tag {
+    display: inline-block;
+    background: var(--secondary-color);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;               /* Pill shape */
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    /* Subtle hover effect */
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.skill-tag:hover {
+    background: var(--primary-color);
+    transform: scale(1.05);
+}
+
+
+/* ==========================================================================
+   9. Key Takeaway Blockquote
+   --------------------------------------------------------------------------
+   A styled <blockquote> used to highlight important reflections or
+   conclusions at the end of a section.  Features a large decorative
+   quotation mark and a gold left border.
+   ========================================================================== */
+.key-takeaway {
+    border-left: 4px solid var(--accent-color);    /* Gold accent stripe */
+    background: linear-gradient(135deg, #fffdf0, #fff9e0); /* Warm cream */
+    padding: 1.25rem 1.5rem 1.25rem 2.5rem;       /* Extra left padding for the quote mark */
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    position: relative;
+    line-height: 1.7;
+}
+
+/* Decorative opening quotation mark */
+.key-takeaway::before {
+    content: "\201C";                               /* Left double quotation mark */
+    font-size: 3rem;
+    color: var(--accent-color);
+    position: absolute;
+    left: 0.5rem;
+    top: 0.25rem;
+    line-height: 1;
+    font-family: Georgia, serif;
+}
+
+/* ==========================================================================
+  10. Data Visualizations
+   --------------------------------------------------------------------------
+   .viz-container wraps images, figures, and Tableau embeds.  Images are
+   made responsive (max-width:100%) so they never overflow their container.
+   ========================================================================== */
+
+/* Centered container for charts and images */
 .viz-container {
     margin: 2rem 0;
     text-align: center;
 }
 
+/* Responsive images inside the container */
 .viz-container img {
-    max-width: 100%;           /* Responsive: never wider than container */
-    height: auto;              /* Maintain aspect ratio */
+    max-width: 100%;                    /* Never wider than parent */
+    height: auto;                       /* Keep aspect ratio */
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 0.5rem;
 }
 
-/* Figure captions */
+/* Italic captions below figures */
 .viz-container figcaption {
     font-style: italic;
     color: var(--text-secondary);
@@ -301,7 +479,28 @@ main section li {
     margin-top: 0.5rem;
 }
 
-/* Grid layout for multiple visualizations */
+/* Standalone figure styling (used in Lab 02, Lab 03) */
+figure {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+figcaption {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 0.75rem;
+    line-height: 1.5;
+}
+
+/* Grid layout when multiple visualizations sit side-by-side */
 .viz-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -309,27 +508,31 @@ main section li {
     margin: 2rem 0;
 }
 
-/* =========================
-   Code Blocks
-   ========================= */
-/* Improve pre/code styling for Python code */
+/* ==========================================================================
+  11. Code Blocks
+   --------------------------------------------------------------------------
+   <pre> gets a dark editor-like background (Monokai-inspired).  <code>
+   uses a monospace font.  Inline code (inside <p> or <li>) gets a light
+   gray background with a pink/red color for contrast.
+   ========================================================================== */
 pre {
-    background: #2d2d2d;          /* Dark background */
-    color: #f8f8f2;               /* Light text */
+    background: #2d2d2d;
+    color: #f8f8f2;
     border: none;
     border-radius: 8px;
     padding: 1.5rem;
-    overflow-x: auto;
+    overflow-x: auto;                   /* Horizontal scroll for long lines */
     margin: 1.5rem 0;
     font-size: 0.9rem;
     line-height: 1.5;
 }
 
 code {
-    font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono',
+                 Consolas, 'Courier New', monospace;
 }
 
-/* Inline code (inside paragraphs) */
+/* Inline code inside paragraphs or list items */
 p code, li code {
     background: #f4f4f4;
     color: #c7254e;
@@ -338,7 +541,7 @@ p code, li code {
     font-size: 0.9em;
 }
 
-/* Code block titles */
+/* Optional: titled code block header (e.g., "Python") */
 .code-title {
     background: #1e1e1e;
     color: #9cdcfe;
@@ -349,17 +552,20 @@ p code, li code {
     margin-bottom: -0.5rem;
 }
 
+/* Remove top radius when preceded by a code-title */
 .code-title + pre {
     border-radius: 0 0 8px 8px;
     margin-top: 0;
 }
 
-/* =========================
-   Data Tables
-   ========================= */
+/* ==========================================================================
+  12. Data Tables
+   --------------------------------------------------------------------------
+   Clean table design with TCU purple header row and zebra-striped body rows.
+   ========================================================================== */
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: collapse;          /* Merge adjacent borders */
     margin: 1.5rem 0;
     background: var(--white);
 }
@@ -370,16 +576,19 @@ th, td {
     border: 1px solid #e2e8f0;
 }
 
+/* Purple header row */
 th {
     background: var(--primary-color);
     color: white;
     font-weight: 600;
 }
 
+/* Alternating row color for readability */
 tr:nth-child(even) {
     background: #f8f9fa;
 }
 
+/* Narrower results table used on data pages */
 .results-table {
     font-size: 0.95rem;
     margin: 1.5rem auto;
@@ -395,15 +604,18 @@ tr:nth-child(even) {
     font-weight: 500;
 }
 
-/* Highlight key rows */
+/* Highlighted row (e.g., totals or important values) */
 .results-table tr.highlight {
     background: #fff3cd;
     font-weight: bold;
 }
 
-/* =========================
-   Framework Connections
-   ========================= */
+/* ==========================================================================
+  13. Framework Connections
+   --------------------------------------------------------------------------
+   A callout box that connects lab work to course concepts or frameworks.
+   Uses a gradient background and a left-border accent.
+   ========================================================================== */
 .framework-callout {
     background: linear-gradient(135deg, #f0e7f8, #e9d5ff);
     border-left: 5px solid var(--secondary-color);
@@ -421,10 +633,14 @@ tr:nth-child(even) {
     color: var(--secondary-color);
 }
 
-/* =========================
-   Portfolio Cards
-   ========================= */
-/* Grid layout for portfolio cards on home page */
+/* ==========================================================================
+  14. Portfolio Cards (Home Page)
+   --------------------------------------------------------------------------
+   A CSS Grid of clickable cards on the home page.  Each card links to a
+   lab page.  Cards lift up and gain a shadow on hover.
+   ========================================================================== */
+
+/* Grid container — auto-fit creates as many columns as will fit */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -432,31 +648,53 @@ tr:nth-child(even) {
     margin: 2rem 0;
 }
 
-/* Individual portfolio card styling */
+/* Individual card — entire card is an <a> tag for accessibility */
 .portfolio-card {
     display: block;
     background: var(--white);
     border: 2px solid #e2e8f0;
     border-radius: 12px;
     padding: 1.5rem;
-    text-decoration: none;
+    text-decoration: none;              /* Remove link underline */
     color: var(--text-color);
-    transition: all 0.3s ease;
     position: relative;
+    overflow: hidden;                   /* Clip the decorative accent bar */
+    /* Smooth hover animation */
+    transition: all 0.3s ease;
 }
 
+/* Decorative top accent bar — appears on hover via opacity */
+.portfolio-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* On hover: lift, shadow, and reveal accent bar */
 .portfolio-card:hover {
     border-color: var(--primary-color);
-    box-shadow: 0 8px 16px rgba(77, 25, 121, 0.15);
-    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(77, 25, 121, 0.18);
+    transform: translateY(-5px);
 }
 
+.portfolio-card:hover::before {
+    opacity: 1;
+}
+
+/* Card title */
 .portfolio-card h3 {
     color: var(--primary-color);
     margin: 0 0 0.5rem 0;
     font-size: 1.25rem;
 }
 
+/* Card description */
 .portfolio-card p {
     color: var(--text-secondary);
     font-size: 0.95rem;
@@ -464,7 +702,7 @@ tr:nth-child(even) {
     line-height: 1.5;
 }
 
-/* Lab tag badge on portfolio cards */
+/* Lab number badge on each card */
 .lab-tag {
     display: inline-block;
     background: var(--secondary-color);
@@ -477,9 +715,11 @@ tr:nth-child(even) {
     letter-spacing: 0.5px;
 }
 
-/* =========================
-   Footer (semantic tag)
-   ========================= */
+/* ==========================================================================
+  15. Footer
+   --------------------------------------------------------------------------
+   Dark footer with centered text.  Links use the gold accent color.
+   ========================================================================== */
 footer {
     background-color: #333;
     color: white;
@@ -498,19 +738,44 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* =========================
-   Responsive Design (Mobile)
-   ========================= */
+/* ==========================================================================
+  16. Scroll-Fade Animation
+   --------------------------------------------------------------------------
+   Sections start invisible and slightly below their final position.
+   When the .fade-in-visible class is added (via the IntersectionObserver
+   in the HTML <script>), they fade up into view.
+   ========================================================================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* State after the observer triggers */
+.fade-in.fade-in-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==========================================================================
+  17. Responsive Design (Mobile — screens 768px or narrower)
+   --------------------------------------------------------------------------
+   On small screens the hamburger button becomes visible, nav links stack
+   vertically, and section padding is reduced to save space.
+   ========================================================================== */
 @media (max-width: 768px) {
+    /* Smaller heading on mobile */
     header h1 {
-        font-size: 1.5rem;     /* Smaller on mobile */
+        font-size: 1.5rem;
     }
 
-    /* Show hamburger button on mobile */
+    /* Show the hamburger button */
     .hamburger {
         display: flex;
     }
 
+    /* Nav becomes a collapsible wrapper */
     nav {
         font-size: 0.9rem;
         justify-content: flex-start;
@@ -518,7 +783,7 @@ footer a:hover {
         flex-wrap: wrap;
     }
 
-    /* Hide nav links by default on mobile */
+    /* Nav links hidden by default on mobile */
     nav ul {
         display: none;
         flex-direction: column;
@@ -528,42 +793,48 @@ footer a:hover {
         padding: 0.5rem 0;
     }
 
+    /* Full-width links for easy tapping */
     nav a {
         display: block;
         width: 100%;
         text-align: center;
     }
 
-    /* Show links when hamburger is toggled */
+    /* Shown when hamburger is toggled (JavaScript adds .nav-open) */
     nav.nav-open ul {
         display: flex;
     }
 
-    /* Make each list item full-width on mobile */
+    /* Full-width list items */
     nav ul li {
         display: block;
         width: 100%;
         margin-right: 0;
     }
 
-    /* Keep the dark-mode slider visible on mobile */
+    /* Keep toggle visible and pushed right on mobile */
     .dark-mode-switch {
         margin-left: auto;
         order: 1;
     }
 
+    /* Less padding inside cards on mobile */
     main section {
-        padding: 1rem;         /* Less padding on mobile */
+        padding: 1rem;
     }
 
+    /* Single-column visualization grid on mobile */
     .viz-grid {
-        grid-template-columns: 1fr;  /* Single column on mobile */
+        grid-template-columns: 1fr;
     }
 }
 
-/* =========================
-   Print Styles (Optional)
-   ========================= */
+
+/* ==========================================================================
+  18. Print Styles
+   --------------------------------------------------------------------------
+   When the user prints the page, hide the navigation and drop shadows.
+   ========================================================================== */
 @media print {
     nav {
         display: none;
@@ -571,40 +842,41 @@ footer a:hover {
 
     main section {
         box-shadow: none;
-        page-break-inside: avoid;
+        page-break-inside: avoid;       /* Try not to split a section across pages */
     }
 }
 
-/* =========================
-   Dark Mode Overrides
-   =========================
-   When the user clicks the dark-mode toggle, JavaScript adds
-   the "dark-mode" class to <body>.  These rules override the
-   light-theme CSS custom properties and any hard-coded colors
-   so the entire page switches to a dark palette.
-   ========================= */
+/* ==========================================================================
+  19. Dark Mode Overrides
+   --------------------------------------------------------------------------
+   When the user clicks the dark-mode toggle, JavaScript adds the
+   "dark-mode" class to <body>.  These rules override custom properties
+   and hard-coded colors to switch to a deep-navy palette.
+   ========================================================================== */
 body.dark-mode {
-    --bg-color: #1a1a2e;            /* Deep navy background */
-    --text-color: #e0e0e0;          /* Light gray text */
-    --white: #2a2a3e;               /* Dark card / section bg */
-    --primary-color: #7c3aed;       /* Lighter purple for contrast */
-    --secondary-color: #a78bfa;     /* Softer purple accents */
-    --text-secondary: #a0a0b0;      /* Muted caption text */
-    --accent-color: #ffd700;        /* Gold stays the same */
+    --bg-color: #1a1a2e;                /* Deep navy page background */
+    --text-color: #e0e0e0;              /* Light gray body text */
+    --white: #2a2a3e;                   /* Dark card / section background */
+    --primary-color: #7c3aed;           /* Brighter purple for contrast */
+    --secondary-color: #a78bfa;         /* Softer purple accents */
+    --text-secondary: #a0a0b0;          /* Muted caption text */
+    --accent-color: #ffd700;            /* Gold stays the same */
+    --synopsis-bg: #2a2040;             /* Darker synopsis callout bg */
+    --synopsis-border: #a78bfa;         /* Lighter purple border */
 
-    /* Explicit overrides (belt-and-suspenders for all browsers) */
+    /* Explicit overrides for maximum browser compatibility */
     background-color: #1a1a2e;
     color: #e0e0e0;
 }
 
-/* Nav bar in dark mode */
+/* Nav bar in dark mode — even deeper navy */
 body.dark-mode nav {
     background-color: #16162a;
 }
 
-/* Header in dark mode */
+/* Header gradient shifts to brighter purple range */
 body.dark-mode header {
-    background-color: #7c3aed;
+    background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 100%);
 }
 
 /* Section cards in dark mode */
@@ -675,25 +947,50 @@ body.dark-mode .framework-callout {
     background: linear-gradient(135deg, #2a2040, #3a2a5e);
 }
 
-/* Images — slight rounding already exists, add a subtle border */
+/* Image shadow increase for dark backgrounds */
 body.dark-mode .viz-container img {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
 }
 
-/* Lab tag badge */
+body.dark-mode figure img {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Lab tag badge — lighter purple in dark mode */
 body.dark-mode .lab-tag {
     background: #a78bfa;
 }
 
-/* Links in dark mode */
+/* Key takeaway blockquote — dark background variant */
+body.dark-mode .key-takeaway {
+    background: linear-gradient(135deg, #2a2a3e, #332a1e);
+    color: #e0e0e0;
+}
+
+/* Synopsis callout — dark background */
+body.dark-mode .lab-synopsis {
+    background: var(--synopsis-bg);
+    border-left-color: var(--synopsis-border);
+    color: #e0e0e0;
+}
+
+/* Skill tags — softer purple in dark mode */
+body.dark-mode .skill-tag {
+    background: #a78bfa;
+    color: #1a1a2e;
+}
+
+/* General links in dark mode — purple */
 body.dark-mode a {
     color: #a78bfa;
 }
 
+/* Nav links stay white */
 body.dark-mode nav a {
     color: white;
 }
 
+/* Footer links stay gold */
 body.dark-mode footer a {
     color: #ffd700;
 }

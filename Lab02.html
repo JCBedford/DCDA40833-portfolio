@@ -1,38 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- META: Character set, responsive viewport, page title, stylesheet link -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Evaluation | Justus Bedford</title>
+    <title>Lab 2: AI Tool Evaluation | Justus Bedford</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+
+    <!-- ============================================================
+         HEADER & NAVIGATION
+         Identical nav structure on every page for consistency.
+         The "active" class moves to whichever page the user is on.
+         ============================================================ -->
     <header>
         <nav>
-        <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="Lab02.html" class="active">AI Tool Evaluation</a></li>
-            <li><a href="Lab03.html">Tufte Critique</a></li>
-            <li><a href="Lab04.html">Tableau Visualization</a></li>
-            <li><a href="Lab05.html">Lab 5</a></li>
-            <li><a href="Lab06.html">Hometown Map</a></li>
-        </ul>
-        <button type="button" class="dark-mode-switch" id="darkModeToggle" title="Toggle dark mode" onclick="document.body.classList.toggle('dark-mode'); localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');">
-            <span class="toggle-icon">☀️</span>
-            <span class="dark-mode-label"><span class="toggle-ball"></span></span>
-            <span class="toggle-icon">🌙</span>
-        </button>
-    </nav>
-        <h1>AI Tool Evaluation</h1>
+            <!-- Hamburger menu button — mobile only -->
+            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation links — Lab 2 is marked "active" -->
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="Lab02.html" class="active">Lab 2: AI Evaluation</a></li>
+                <li><a href="Lab03.html">Lab 3: Tufte Critique</a></li>
+                <li><a href="Lab04.html">Lab 4: Tableau Viz</a></li>
+                <li><a href="Lab05.html">Lab 5: Vibe Coding</a></li>
+                <li><a href="Lab06.html">Lab 6: Hometown Map</a></li>
+            </ul>
+
+            <!-- Dark-mode toggle slider -->
+            <button type="button" class="dark-mode-switch" id="darkModeToggle" title="Toggle dark mode"
+                onclick="document.body.classList.toggle('dark-mode');
+                         localStorage.setItem('darkMode',
+                             document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');">
+                <span class="toggle-icon">☀️</span>
+                <span class="dark-mode-label"><span class="toggle-ball"></span></span>
+                <span class="toggle-icon">🌙</span>
+            </button>
+        </nav>
+
+        <!-- Page heading -->
+        <h1>Lab 2: AI Tool Evaluation</h1>
+        <p>DCDA 40833 | Justus Bedford</p>
     </header>
 
+    <!-- ============================================================
+         MAIN CONTENT
+         ============================================================ -->
     <main>
-        <section>
+
+        <!-- ========== LAB SYNOPSIS ==========
+             A highlighted callout box that summarizes the assignment
+             requirements so readers immediately understand the goal. -->
+        <section class="fade-in">
+            <h2>Lab Synopsis</h2>
+            <div class="lab-synopsis">
+                <strong>Assignment Requirements:</strong>
+                For Lab 2, we were asked to select and evaluate two AI tools — one we had used before and one that was new to us. For each tool, we discussed its capabilities, identified appropriate and inappropriate use cases, and considered the ethical implications of its design and data practices. The evaluation was written up as an HTML page and published to our portfolio site.
+            </div>
+
+            <!-- Skill tags — highlight the specific skills practiced in this lab -->
+            <div class="skill-tags">
+                <span class="skill-tag">Critical Analysis</span>
+                <span class="skill-tag">AI Ethics</span>
+                <span class="skill-tag">HTML</span>
+                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">Academic Writing</span>
+            </div>
+        </section>
+
+        <!-- ========== INTRODUCTION ==========
+             Sets context for the two tools chosen and explains
+             why they were selected. -->
+        <section class="fade-in">
             <h2>Introduction</h2>
             <p>
                 For this lab, I explored two AI tools from different categories: ChatGPT, a general-purpose
@@ -45,7 +90,11 @@
             </p>
         </section>
 
-        <section>
+        <!-- ========== TOOL 1: CHATGPT ==========
+             Evaluation of ChatGPT broken into three sub-topics:
+             Capabilities, Appropriate Use, and Ethical Considerations.
+             Includes a screenshot figure at the end. -->
+        <section class="fade-in">
             <h2>Tool 1: ChatGPT</h2>
 
             <h3>Capabilities</h3>
@@ -76,14 +125,18 @@
                 materials.
             </p>
 
+            <!-- Screenshot of ChatGPT in action — stored in images/ folder.
+                 The <figure> element groups the image with its caption. -->
             <figure>
-    <img src="images/ChatGPTSS1.png" width="100%">
-    <figcaption>Example of ChatGPT assisting with outlining and drafting written work.</figcaption>
-</figure>
-
+                <img src="images/ChatGPTSS1.png" alt="Screenshot of ChatGPT assisting with outlining and drafting written work">
+                <figcaption>Example of ChatGPT assisting with outlining and drafting written work.</figcaption>
+            </figure>
         </section>
 
-        <section>
+        <!-- ========== TOOL 2: NOTEBOOKLM ==========
+             Same three-part structure as Tool 1: Capabilities,
+             Appropriate Use, and Ethical Considerations. -->
+        <section class="fade-in">
             <h2>Tool 2: NotebookLM</h2>
 
             <h3>Capabilities</h3>
@@ -111,14 +164,17 @@
                 introduced through selective source choice, making human judgment critical.
             </p>
 
+            <!-- Screenshot of NotebookLM home screen -->
             <figure>
-    <img src="images/NotebookSS1.png" width="100%">
-    <figcaption>NotebookLM home screen, showing past work thats been done.</figcaption>
-</figure>
-
+                <img src="images/NotebookSS1.png" alt="NotebookLM home screen showing past notebooks and work">
+                <figcaption>NotebookLM home screen, showing past work that has been done.</figcaption>
+            </figure>
         </section>
 
-        <section>
+        <!-- ========== BROADER REFLECTIONS ==========
+             A synthesis paragraph connecting both tools to larger
+             themes about AI in academia and the DCDA program. -->
+        <section class="fade-in">
             <h2>Broader Reflections</h2>
             <p>
                 In my academic and professional work, I see AI tools as supports for organization, research
@@ -127,23 +183,51 @@
                 they also require stronger critical evaluation skills. As we discussed in our Human Centered AI
                 course, AI tools should be used thoughtfully and ethically, and it is critical that we do not let
                 it replace essential human skills like critical thinking and cultural analysis. While AI can assist
-                 with summarizing information and identifying patterns, uniquely human skills, such as ethical reasoning,
-                contextual understanding, and critical cultural analysis remain essential. As AI tools
+                with summarizing information and identifying patterns, uniquely human skills — such as ethical reasoning,
+                contextual understanding, and critical cultural analysis — remain essential. As AI tools
                 continue to evolve, important questions include what data informs the tool, how transparent
                 its processes are, and how its use shapes learning rather than shortcuts it.
             </p>
         </section>
+
+        <!-- ========== WHAT I LEARNED ==========
+             This section satisfies the portfolio requirement to discuss
+             what the lab demonstrates about the student's abilities. -->
+        <section class="fade-in">
+            <h2>What I Learned &amp; Skills Demonstrated</h2>
+            <p>
+                Lab 2 was my first opportunity in DCDA 40833 to think critically about the tools I use every day. Writing the evaluation forced me to move beyond surface-level impressions and consider how AI tools are built, what data they rely on, and how their design affects accuracy and fairness.
+            </p>
+            <p>
+                On the technical side, this was also the lab where I first built an HTML page from scratch and published it to GitHub Pages. That process — writing semantic HTML, linking a stylesheet, and troubleshooting deployment — gave me the foundational web development skills that every subsequent lab built upon.
+            </p>
+
+            <!-- Key takeaway — gold-bordered blockquote for visual emphasis -->
+            <blockquote class="key-takeaway">
+                This lab demonstrated my ability to critically evaluate emerging technology, articulate ethical considerations in writing, and build a functional web page to present that analysis.
+            </blockquote>
+        </section>
+
     </main>
 
+    <!-- ============================================================
+         FOOTER — consistent across all pages
+         ============================================================ -->
     <footer>
-        <p>&copy; 2026 Justus Bedford | <a href="https://github.com/JCBedford/DCDA40833-portfolio">GitHub</a></p>
+        <p>&copy; 2026 Justus Bedford | <a href="https://github.com/JCBedford/DCDA40833-portfolio" target="_blank">GitHub</a></p>
     </footer>
 
+    <!-- ============================================================
+         SCRIPTS — dark mode restore, hamburger toggle, scroll-fade
+         ============================================================ -->
     <script>
         (function() {
+            /* Restore dark mode preference from localStorage */
             if (localStorage.getItem('darkMode') === 'enabled') {
                 document.body.classList.add('dark-mode');
             }
+
+            /* Hamburger menu toggle for mobile */
             var hamburger = document.querySelector('.hamburger');
             var nav = document.querySelector('nav');
             if (hamburger && nav) {
@@ -159,5 +243,21 @@
                     });
                 }
             }
+
+            /* Scroll-fade: animate sections into view as user scrolls */
+            var fadeElements = document.querySelectorAll('.fade-in');
+            if ('IntersectionObserver' in window && fadeElements.length > 0) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fade-in-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                fadeElements.forEach(function(el) { observer.observe(el); });
+            }
         })();
     </script>
+</body>
+</html>
